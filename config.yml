@@ -1,0 +1,81 @@
+# Decap CMS configuratie voor Untold Legacy
+#
+# BELANGRIJK — backend invullen:
+# Net als bij RT107 gebruiken we DecapBridge als auth-laag, omdat Netlify Identity
+# en Git Gateway deprecated zijn voor nieuwe sites. Vervang de placeholder-waarden
+# hieronder door wat DecapBridge je aanlevert nadat je je repo hebt gekoppeld op
+# https://decapbridge.com
+#
+# Tot je dat hebt ingevuld werkt de login op /admin nog niet.
+
+backend:
+  name: git-gateway
+  repo: JOUW-GEBRUIKER/untold-legacy   # bv. UntoldLegacy/untold-legacy
+  branch: main
+  # DecapBridge vult hier extra velden in (gateway_url, auth_endpoint, e.d.)
+  # Neem die exact over zoals DecapBridge ze toont.
+
+# Geen media-uploads nodig: alleen teksten zijn bewerkbaar.
+# (Beelden blijven vast in de code, zoals afgesproken.)
+media_folder: "assets"
+public_folder: "assets"
+
+locale: "nl"
+
+collections:
+  - name: "site"
+    label: "Website teksten"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "content"
+        label: "Alle teksten"
+        file: "content/site.json"
+        description: "Alle bewerkbare teksten van de website. Beelden en logo's staan vast in de code."
+        fields:
+          - label: "Intro (story)"
+            name: "story"
+            widget: "object"
+            fields:
+              - { label: "Openingszin (lead)", name: "lead", widget: "text" }
+              - { label: "Alinea 1", name: "p1", widget: "text" }
+              - { label: "Alinea 2", name: "p2", widget: "text" }
+              - { label: "Alinea 3", name: "p3", widget: "text" }
+              - { label: "Alinea 4 (slot)", name: "p4", widget: "text" }
+
+          - label: "Purposeful Legacy"
+            name: "personal"
+            widget: "object"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Alinea 1", name: "p1", widget: "text" }
+              - { label: "Alinea 2", name: "p2", widget: "text" }
+              - { label: "Alinea 3", name: "p3", widget: "text" }
+              - { label: "Pay-off (closing)", name: "closing", widget: "string" }
+
+          - label: "Corporate Branding"
+            name: "corporate"
+            widget: "object"
+            fields:
+              - { label: "Titel", name: "title", widget: "string" }
+              - { label: "Alinea 1", name: "p1", widget: "text" }
+              - { label: "Alinea 2", name: "p2", widget: "text" }
+              - { label: "Alinea 3", name: "p3", widget: "text" }
+              - { label: "Pay-off (closing)", name: "closing", widget: "string" }
+
+          - label: "Selected clients"
+            name: "clients"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow-tekst", name: "eyebrow", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow-tekst", name: "eyebrow", widget: "string" }
+              - { label: "Titel", name: "head", widget: "string" }
+              - { label: "Ondertitel", name: "sub", widget: "text" }
+              - { label: "E-mailadres", name: "email", widget: "string" }
+              - { label: "Telefoonnummer", name: "phone", widget: "string" }
