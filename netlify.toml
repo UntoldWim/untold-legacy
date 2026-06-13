@@ -1,0 +1,9 @@
+# Netlify configuratie voor Untold Legacy
+# Deze site is platte HTML en heeft GEEN build-stap nodig.
+# Dit bestand voorkomt dat Netlify per ongeluk een build command auto-detecteert.
+
+[build]
+  # Geen build command: de bestanden worden rechtstreeks gepubliceerd.
+  command = ""
+  # De site staat in de root van de repo.
+  publish = "."
